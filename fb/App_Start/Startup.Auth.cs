@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using fb.Models;
+using Microsoft.Owin.Security.Facebook;
 
 namespace fb
 {
@@ -34,7 +35,7 @@ namespace fb
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -54,15 +55,58 @@ namespace fb
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1012694558848455",
+               appSecret: "e8afed6251c4866c0262b34da1180fb0");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
             //    ClientId = "",
             //    ClientSecret = ""
             //});
-        }
+        //        public void input()
+        //{
+        //    var facebookAuthenticationOptions = new FacebookAuthenticationOptions()
+        //    {
+        //        AppId = "1012694558848455",
+        //        AppSecret = "e8afed6251c4866c0262b34da1180fb0",
+        //        AuthenticationType = "Facebook",
+        //        SignInAsAuthenticationType = "ExternalCookie",
+        //        Provider = new FacebookAuthenticationProvider
+        //        {
+        //            OnAuthenticated = async ctx => {
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.DateOfBirth, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.Country, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.Gender, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.MobilePhone, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.OtherPhone, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.HomePhone, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.StateOrProvince, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.Email, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.Country, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.Actor, ctx.User["birthday"].ToString()));
+        //                ctx.Identity.AddClaim(new Claim(ClaimTypes.DateOfBirth, ctx.User["birthday"].ToString()));
+        //            }
+        //        }
+        //    };
+        //    facebookAuthenticationOptions.Scope.Add("user_birthday");
+        //    //facebookAuthenticationOptions.Scope.Add("first_name");
+        //    //facebookAuthenticationOptions.Scope.Add("last_name");
+        //    facebookAuthenticationOptions.Scope.Add("manage_pages");
+        //    facebookAuthenticationOptions.Scope.Add("user_interests");
+        //    facebookAuthenticationOptions.Scope.Add("user_location");
+        //    facebookAuthenticationOptions.Scope.Add("user_photos");
+        //    facebookAuthenticationOptions.Scope.Add("user_relationships");
+        //    facebookAuthenticationOptions.Scope.Add("user_relationship_details");
+        //    facebookAuthenticationOptions.Scope.Add("user_status");
+        //    facebookAuthenticationOptions.Scope.Add("user_tagged_places");
+        //    facebookAuthenticationOptions.Scope.Add("user_videos");
+        //    facebookAuthenticationOptions.Scope.Add("user_website");
+        //    facebookAuthenticationOptions.Scope.Add("read_friendlists");
+        //    facebookAuthenticationOptions.Scope.Add("read_stream");
+        //    facebookAuthenticationOptions.Scope.Add("email");
+        //    app.UseFacebookAuthentication(facebookAuthenticationOptions);
+        //}
+    }
     }
 }

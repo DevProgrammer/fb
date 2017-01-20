@@ -36,9 +36,15 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
+    <!-- Modal view -->
+    @*@Html.Partial("_ModalMsgPartial")*@
+    @*Scripts*@
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
+    <!-- Modal -->
+    @Scripts.Render("~/bundles/custom-modal")
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
